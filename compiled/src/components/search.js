@@ -1,0 +1,2 @@
+const Search = () => {};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL3NlYXJjaC5qc3giXSwibmFtZXMiOlsiU2VhcmNoIl0sIm1hcHBpbmdzIjoiQUFBQSxNQUFNQSxTQUFTLE1BQU0sQ0FFcEIsQ0FGRCIsImZpbGUiOiJzZWFyY2guanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBTZWFyY2ggPSAoKSA9PiB7XG4gIFxufSJdfQ==
