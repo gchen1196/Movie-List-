@@ -3,12 +3,19 @@
 //want to pass every props.movie entry into movielistentry component
 const MovieList = (props) => {
 	//can be either movieStr or moviearray 
-	var movie = props.movie;
+	var display;
+	var inputText = props.movie;
 	var movies = props.movies;
-	
+	if (inputText === null) {
+		display = movies.map(movie => <div>{movie.title}</div>)
+	} else {
+		var filteredMovies = movies.filter(movie => movie.title.includes(inputText));
+		display = filteredMovies.map(movie => <div>{movie.title}</div>)
+	} 
+
 	return (
 		<div>
-			{props.movies.map(movie => <div>{movie.title}</div>)}
+			{display}
 		</div>
 	)
 }
