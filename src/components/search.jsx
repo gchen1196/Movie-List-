@@ -5,6 +5,9 @@ class Search extends React.Component {
 //onsubmit: everytime user submits, invoke cb
 //NEED TO STORE INPUT TEXT ON STATE PROP 
 //FOR FORM: do not want page to re-render everytime press enter. use preventDefault() to prevent event from re-rendering
+
+//HOW TO PASS this.state.text FROM search BACK UP to app
+//IN CLASS BASED, props is used with this.props
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +21,7 @@ class Search extends React.Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-    console.log(this.state.text)
+    this.props.cbText(this.state.text)
   }
 
   render() {

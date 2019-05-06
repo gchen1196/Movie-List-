@@ -12,15 +12,24 @@ class App extends React.Component {
 		//initialize movies list is to show all movies
 		this.state = {
 			movies: Data, 
+			movie: null
 		}
+		//need to bind this to getTextInput so this refers to App 
+		this.getTextInput = this.getTextInput.bind(this);
 	}
-	render () {
+	//need to create a function to pass down to search as prop that will have access to input text
+	getTextInput(text) {
+		console.log('APP HAS ACCESS TO', text);
+		//'this' works here because of bind 
+		this.setState({movie: text})
+	}
+	render() {
 		return (
 			<div>
 				<div className='ui container' style={{marginTop: '20px'}}>
-					<Search />
+					<Search cbText={this.getTextInput}/>
 				</div>
-				<MovieList movies={this.state.movies}/>
+				<MovieList movies={this.state.movies} movie={this.state.movie}/>
 			</div>
 		)
 	}
