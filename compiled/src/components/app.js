@@ -1,27 +1,32 @@
 import MovieList from './movielist.js';
 import Data from '../data.js';
+import Search from './search.js';
 
-//app need to determine what user input for movies
-//
+// Add a search bar so that a user may see if a movie is in the list.
+// After a user submits the search, display all matches (or partial matches) to that title.
+// Bonus: Handle the case of "no movie by that name found" gracefully.
 class App extends React.Component {
+	constructor(props) {
+		super(props);
+
+		//initialize movies list is to show all movies
+		this.state = {
+			movies: Data
+		};
+	}
 	render() {
 		return React.createElement(
 			'div',
 			null,
 			React.createElement(
 				'div',
-				{ className: 'navbar' },
-				React.createElement('input', { type: 'text', placeholder: 'Search Movies' }),
-				React.createElement(
-					'button',
-					{ type: 'submit' },
-					'Go!'
-				)
+				{ className: 'ui container', style: { marginTop: '20px' } },
+				React.createElement(Search, null)
 			),
-			React.createElement(MovieList, { movies: Data })
+			React.createElement(MovieList, { movies: this.state.movies })
 		);
 	}
 }
 
 export default App;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL2FwcC5qc3giXSwibmFtZXMiOlsiTW92aWVMaXN0IiwiRGF0YSIsIkFwcCIsIlJlYWN0IiwiQ29tcG9uZW50IiwicmVuZGVyIl0sIm1hcHBpbmdzIjoiQUFBQSxPQUFPQSxTQUFQLE1BQXNCLGdCQUF0QjtBQUNBLE9BQU9DLElBQVAsTUFBaUIsWUFBakI7O0FBRUE7QUFDQTtBQUNBLE1BQU1DLEdBQU4sU0FBa0JDLE1BQU1DLFNBQXhCLENBQWtDO0FBQ2pDQyxVQUFVO0FBQ1QsU0FDQztBQUFBO0FBQUE7QUFDQztBQUFBO0FBQUEsTUFBSyxXQUFVLFFBQWY7QUFDQyxtQ0FBTyxNQUFLLE1BQVosRUFBbUIsYUFBWSxlQUEvQixHQUREO0FBRUM7QUFBQTtBQUFBLE9BQVEsTUFBSyxRQUFiO0FBQUE7QUFBQTtBQUZELElBREQ7QUFLQyx1QkFBQyxTQUFELElBQVcsUUFBUUosSUFBbkI7QUFMRCxHQUREO0FBU0E7QUFYZ0M7O0FBY2xDLGVBQWVDLEdBQWYiLCJmaWxlIjoiYXBwLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IE1vdmllTGlzdCBmcm9tICcuL21vdmllbGlzdC5qcyc7XG5pbXBvcnQgRGF0YSBmcm9tICcuLi9kYXRhLmpzJztcblxuLy9hcHAgbmVlZCB0byBkZXRlcm1pbmUgd2hhdCB1c2VyIGlucHV0IGZvciBtb3ZpZXNcbi8vXG5jbGFzcyBBcHAgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuXHRyZW5kZXIgKCkge1xuXHRcdHJldHVybiAoXG5cdFx0XHQ8ZGl2PlxuXHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT0nbmF2YmFyJz5cblx0XHRcdFx0XHQ8aW5wdXQgdHlwZT0ndGV4dCcgcGxhY2Vob2xkZXI9J1NlYXJjaCBNb3ZpZXMnIC8+XG5cdFx0XHRcdFx0PGJ1dHRvbiB0eXBlPSdzdWJtaXQnPkdvITwvYnV0dG9uPlxuXHRcdFx0XHQ8L2Rpdj5cblx0XHRcdFx0PE1vdmllTGlzdCBtb3ZpZXM9e0RhdGF9Lz5cblx0XHRcdDwvZGl2PlxuXHRcdClcblx0fVxufVxuXG5leHBvcnQgZGVmYXVsdCBBcHA7ICJdfQ==
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL2FwcC5qc3giXSwibmFtZXMiOlsiTW92aWVMaXN0IiwiRGF0YSIsIlNlYXJjaCIsIkFwcCIsIlJlYWN0IiwiQ29tcG9uZW50IiwiY29uc3RydWN0b3IiLCJwcm9wcyIsInN0YXRlIiwibW92aWVzIiwicmVuZGVyIiwibWFyZ2luVG9wIl0sIm1hcHBpbmdzIjoiQUFBQSxPQUFPQSxTQUFQLE1BQXNCLGdCQUF0QjtBQUNBLE9BQU9DLElBQVAsTUFBaUIsWUFBakI7QUFDQSxPQUFPQyxNQUFQLE1BQW1CLGFBQW5COztBQUVBO0FBQ0E7QUFDQTtBQUNBLE1BQU1DLEdBQU4sU0FBa0JDLE1BQU1DLFNBQXhCLENBQWtDO0FBQ2pDQyxhQUFZQyxLQUFaLEVBQW1CO0FBQ2xCLFFBQU1BLEtBQU47O0FBRUE7QUFDQSxPQUFLQyxLQUFMLEdBQWE7QUFDWkMsV0FBUVI7QUFESSxHQUFiO0FBR0E7QUFDRFMsVUFBVTtBQUNULFNBQ0M7QUFBQTtBQUFBO0FBQ0M7QUFBQTtBQUFBLE1BQUssV0FBVSxjQUFmLEVBQThCLE9BQU8sRUFBQ0MsV0FBVyxNQUFaLEVBQXJDO0FBQ0Msd0JBQUMsTUFBRDtBQURELElBREQ7QUFJQyx1QkFBQyxTQUFELElBQVcsUUFBUSxLQUFLSCxLQUFMLENBQVdDLE1BQTlCO0FBSkQsR0FERDtBQVFBO0FBbEJnQzs7QUFxQmxDLGVBQWVOLEdBQWYiLCJmaWxlIjoiYXBwLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IE1vdmllTGlzdCBmcm9tICcuL21vdmllbGlzdC5qcyc7XG5pbXBvcnQgRGF0YSBmcm9tICcuLi9kYXRhLmpzJztcbmltcG9ydCBTZWFyY2ggZnJvbSAnLi9zZWFyY2guanMnO1xuXG4vLyBBZGQgYSBzZWFyY2ggYmFyIHNvIHRoYXQgYSB1c2VyIG1heSBzZWUgaWYgYSBtb3ZpZSBpcyBpbiB0aGUgbGlzdC5cbi8vIEFmdGVyIGEgdXNlciBzdWJtaXRzIHRoZSBzZWFyY2gsIGRpc3BsYXkgYWxsIG1hdGNoZXMgKG9yIHBhcnRpYWwgbWF0Y2hlcykgdG8gdGhhdCB0aXRsZS5cbi8vIEJvbnVzOiBIYW5kbGUgdGhlIGNhc2Ugb2YgXCJubyBtb3ZpZSBieSB0aGF0IG5hbWUgZm91bmRcIiBncmFjZWZ1bGx5LlxuY2xhc3MgQXBwIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcblx0Y29uc3RydWN0b3IocHJvcHMpIHtcblx0XHRzdXBlcihwcm9wcyk7XG5cdFxuXHRcdC8vaW5pdGlhbGl6ZSBtb3ZpZXMgbGlzdCBpcyB0byBzaG93IGFsbCBtb3ZpZXNcblx0XHR0aGlzLnN0YXRlID0ge1xuXHRcdFx0bW92aWVzOiBEYXRhLCBcblx0XHR9XG5cdH1cblx0cmVuZGVyICgpIHtcblx0XHRyZXR1cm4gKFxuXHRcdFx0PGRpdj5cblx0XHRcdFx0PGRpdiBjbGFzc05hbWU9J3VpIGNvbnRhaW5lcicgc3R5bGU9e3ttYXJnaW5Ub3A6ICcyMHB4J319PlxuXHRcdFx0XHRcdDxTZWFyY2ggLz5cblx0XHRcdFx0PC9kaXY+XG5cdFx0XHRcdDxNb3ZpZUxpc3QgbW92aWVzPXt0aGlzLnN0YXRlLm1vdmllc30vPlxuXHRcdFx0PC9kaXY+XG5cdFx0KVxuXHR9XG59XG5cbmV4cG9ydCBkZWZhdWx0IEFwcDsgIl19
