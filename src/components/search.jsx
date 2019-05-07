@@ -11,7 +11,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: null
+      text: 'Search...'
     }
   }
 
@@ -28,7 +28,7 @@ class Search extends React.Component {
     return (
       <div className='ui segment'>
         <form className='ui form' onSubmit={(e) => this.onFormSubmit(e)}>  
-          <input type='text' value={this.state.text}
+          <input type='text' value={this.state.text} onClick={() => this.setState({text: ''})}
           onChange={(e) => this.onInputChange(e)}/>
           <button>Go!</button>
         </form>

@@ -7,10 +7,10 @@ const MovieList = (props) => {
 	var inputText = props.movie;
 	var movies = props.movies;
 	if (inputText === null) {
-		display = movies.map(movie => <div>{movie.title}</div>)
+		display = movies.map((movie, index) => <div key={index}>{movie.title}</div>)
 	} else {
 		var filteredMovies = movies.filter(movie => movie.title.includes(inputText));
-		display = filteredMovies.map(movie => <div>{movie.title}</div>)
+		display = filteredMovies.map((movie, index) => <div key={index}>{movie.title}</div>)
 	} 
 
 	return (

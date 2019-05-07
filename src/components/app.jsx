@@ -1,6 +1,7 @@
 import MovieList from './movielist.js';
 import Data from '../data.js';
 import Search from './search.js';
+import Add from './add.js';
 
 // Add a search bar so that a user may see if a movie is in the list.
 // After a user submits the search, display all matches (or partial matches) to that title.
@@ -18,14 +19,19 @@ class App extends React.Component {
 		this.getTextInput = this.getTextInput.bind(this);
 	}
 	//need to create a function to pass down to search as prop that will have access to input text
+	
 	getTextInput(text) {
 		console.log('APP HAS ACCESS TO', text);
 		//'this' works here because of bind 
 		this.setState({movie: text})
 	}
+	
 	render() {
 		return (
 			<div>
+				<div className='ui container' style={{marginTop: '10px'}}>
+					<Add/>
+				</div>
 				<div className='ui container' style={{marginTop: '20px'}}>
 					<Search cbText={this.getTextInput}/>
 				</div>
